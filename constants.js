@@ -1,4 +1,4 @@
-exports.constant= {
+const constant= {
     VALIDATION_ERROR: 400,
     UNAUTHORIZED: 401,
     FORBIDDEN: 403,
@@ -6,3 +6,5 @@ exports.constant= {
     SERVER_ERROR: 500
 
 }
+
+export default constant;

@@ -1,4 +1,4 @@
-const { constant } = require('../constants');
+import constant from '../constants.js';
 
 const errorHandler = (err, req, res, next) => {
     const statusCode = res.statusCode ? res.statusCode : 500;
@@ -25,4 +25,4 @@ const errorHandler = (err, req, res, next) => {
     
 };
  
-module.exports = { errorHandler };
+export default errorHandler ;
