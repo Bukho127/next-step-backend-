@@ -11,8 +11,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.post('/test', (req, res) => {
+  console.log("Req headers:", req.headers);
+  console.log("Req body:", req.body);
+  res.json({ received: req.body });
+});
+
 app.use('/api/students', studentsRoutes);
 app.use('/api/subjects', subjectRoutes);
+console.log('Routes for /api/students and /api/subjects have been set up.');
 
 app.use(errorHandler);
 

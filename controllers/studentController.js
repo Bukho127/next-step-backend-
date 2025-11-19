@@ -7,6 +7,7 @@ import Student from '../models/Student.js';
 export const getAllStudents = asyncHandler(async (req, res) => {
   const students = await Student.findAll();
   res.status(200).json(students);
+  
 });
 // @desc    Create a new student
 // @route   POST /api/students

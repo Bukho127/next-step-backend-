@@ -9,6 +9,8 @@ export const getAllSubjects = asyncHandler(async (req, res) => {
   res.status(200).json(subjects);
 });
 
+
+
 // @desc    Create a new subject
 // @route   POST /api/subjects
 // @access  Public
@@ -20,10 +22,9 @@ export const createSubject = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('All fields are mandatory');
   }
+  const subject = await Subjects.create({ name, score, code });
+  res.status(201).json({ message: 'Subject created successfully!'});
 
-  const created = await Subjects.create({ name, score, code });
-
-  res.status(201).json(created);
 });
 
 // @desc    Get single subject

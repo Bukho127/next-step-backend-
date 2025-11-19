@@ -8,6 +8,7 @@ const Student = sequelize.define('Student', {
   password: { type: DataTypes.STRING, allowNull: false }, 
   dateOfBirth: { type: DataTypes.DATEONLY, allowNull: false },
   grade: { type: DataTypes.STRING, allowNull: false },
+  badge: { type: DataTypes.STRING, allowNull: true },
 }, {
   timestamps: true,
 });
