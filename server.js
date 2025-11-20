@@ -2,27 +2,45 @@ import express from 'express';
 import dotenv from 'dotenv';
 import studentsRoutes from './routes/studentsRoutes.js';
 import subjectRoutes from './routes/subjectRoutes.js';
+import careerFieldRoutes from './routes/careerFieldRoute.js';
+import profileRoutes from './routes/profileRoute.js'; 
 import errorHandler from './middleware/errorhandler.js';
+import path from 'path';
+import multer from 'multer';
+
+
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Body parser
 app.use(express.json());
 
-app.post('/test', (req, res) => {
-  console.log("Req headers:", req.headers);
-  console.log("Req body:", req.body);
-  res.json({ received: req.body });
-});
-
+// API routes
 app.use('/api/students', studentsRoutes);
 app.use('/api/subjects', subjectRoutes);
-console.log('Routes for /api/students and /api/subjects have been set up.');
+app.use('/api/career-fields', careerFieldRoutes);
+app.use('/api/profile', profileRoutes); 
 
+console.log('Routes for /api/students, /api/subjects, and /api/profile have been set up.');
+
+// Multer error handler
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({ error: err.message });
+  }
+  if (err) {
+    return res.status(400).json({ error: err.message });
+  }
+  next();
+});
+
+
+// Error handling middleware
 app.use(errorHandler);
-
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.listen(PORT, () => {
   console.log(`Server running on http://127.0.0.1:${PORT}`);
 });

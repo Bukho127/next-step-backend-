@@ -23,7 +23,7 @@ export const createSubject = asyncHandler(async (req, res) => {
     throw new Error('All fields are mandatory');
   }
   const subject = await Subjects.create({ name, score, code });
-  res.status(201).json({ message: 'Subject created successfully!'});
+  res.status(201).json({ message: "Subject created", subject });
 
 });
 
@@ -52,7 +52,9 @@ export const updateSubject = asyncHandler(async (req, res) => {
 
   await subject.update(req.body);
 
-  res.status(200).json(subject);
+  res.status(200).json({
+    message: "Subject updated", subject
+  });
 });
 
 // @desc    Delete a subject
