@@ -15,7 +15,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Body parser
 app.use(express.json());
 
 // API routes
@@ -36,7 +35,6 @@ app.use((err, req, res, next) => {
   }
   next();
 });
-
 
 // Error handling middleware
 app.use(errorHandler);
