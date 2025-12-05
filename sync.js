@@ -4,6 +4,7 @@ import Student from './models/Student.js';
 import CareerField from './models/CareerField.js';
 import StudentApplication from './models/StudentApplication.js';
 import Subjects from './models/Subjects.js';
+import Users from './models/Users.js';
 
 const syncDB = async () => {
   try {

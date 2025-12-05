@@ -5,25 +5,30 @@ import subjectRoutes from './routes/subjectRoutes.js';
 import careerFieldRoutes from './routes/careerFieldRoute.js';
 import profileRoutes from './routes/profileRoute.js'; 
 import errorHandler from './middleware/errorhandler.js';
+import userRoutes from './routes/usersRoutes.js'
 import path from 'path';
 import multer from 'multer';
+import  cors from 'cors';
+
 
 
 
 dotenv.config();
 
 const app = express();
+app.use(cors())
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
 // API routes
 app.use('/api/students', studentsRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/career-fields', careerFieldRoutes);
 app.use('/api/profile', profileRoutes); 
 
-console.log('Routes for /api/students, /api/subjects, and /api/profile have been set up.');
+console.log('Routes for /api/students, /api/subjects,/api/profile and api/user/register and api/user/login have been set up.');
 
 // Multer error handler
 app.use((err, req, res, next) => {

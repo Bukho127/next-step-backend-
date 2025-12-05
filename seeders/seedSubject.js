@@ -1,5 +1,5 @@
 import Subjects from "../models/Subjects.js";
-import { Op } from "sequelize"; // <-- import Op
+import { Op } from "sequelize"; 
 
 export const seedSubjects = async () => {
   const subjects = [
