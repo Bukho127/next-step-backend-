@@ -5,7 +5,7 @@ import Subjects from '../models/Subjects.js';
 // @route   GET /api/subjects
 // @access  Public
 export const getAllSubjects = asyncHandler(async (req, res) => {
-  const subjects = await Subjects.findAll();
+  const subjects = await Subjects.findAll({where: {user_id: req.user.id}});
   res.status(200).json(subjects);
 });
 
